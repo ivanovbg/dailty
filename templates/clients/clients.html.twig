@@ -1,0 +1,82 @@
+{% extends '/layout/layout.html.twig' %}
+
+{% block body %}
+    <div class="row">
+        <!-- flash messages -->
+        {% include 'partials/more/flash_messages.html.twig' %}
+        <!-- /end flash messages -->
+        <div class="col-md-12">
+            <!-- TABLE: LATEST ORDERS -->
+            <div class="box box-info">
+                <div class="box-header with-border">
+                    {% include "partials/more/table_search_box.html.twig" %}
+
+                    <div class="box-tools pull-right">
+                        {% if info.clientManage  %}
+                            <a href="{{ path("client_add", {'slug': slug}) }}" class="btn btn-block btn-primary">
+                                Добави клиент
+                            </a>
+                        {% endif %}
+                    </div>
+
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                    <div class="table-responsive">
+                        {% if clients is empty %}
+                            <div class="callout callout-danger">
+                                <h4>Упссс, няма добавени клиенти!</h4>
+
+                                <p>Съжаляваме, но изглежда все още няма добавени клиенти.</p>
+                            </div>
+                        {% else %}
+                            <table class="table no-margin">
+                                <thead>
+                                <tr>
+                                    <th>Клиент</th>
+                                    <th>Добавен на</th>
+                                    <th width="15%">Опции</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {% for client in clients %}
+                                    <tr>
+                                        <td>{{ client.name }}</td>
+                                        <td>{{ client.dateAdded|date("H:i d-m-Y") }}</td>
+                                        <td>
+                                            <a href="javascript:;" class="btn btn-xs js-send-email-to-client {% if not client.email %}disabled{% endif %}" data-toggle="modal" data-target="#sendClientEmail" data-placement="top" data-name="{{ client.name }}" data-client="{{ client.id }}"><i class="fa fa-comment"></i></a>
+
+                                            <a href="{{ path('client_history', {'slug': slug, 'id': client.id}) }}" class="btn btn-xs" data-toggle="tooltip" data-placement="top" title="Хронология посещения"><i class="fa fa-history" aria-hidden="true"></i>
+                                            </a>
+
+                                            {% if info.clientManage %}
+                                            <a href="{{ path('client_add', {'slug': slug, 'id': client.id}) }}" class="btn btn-xs" data-toggle="tooltip" data-placement="top" title="Редактиране"><i class="fa fa-pencil" aria-hidden="true"></i>
+                                            </a>
+
+                                            <button class="btn btn-xs confirm_delete" data-url="{{ path('remove_client', {'slug': slug, 'client_id': client.id}) }}"><i class="fa fa-remove" aria-hidden="true"></i></button>
+                                            {% endif %}
+                                        </td>
+
+                                    </tr>
+                                {% endfor %}
+
+                                </tbody>
+                            </table>
+                        {% endif %}
+                    </div><!-- /.table-responsive -->
+                </div><!-- /.box-body -->
+                <div class="box-footer clearfix">
+                    <ul class="pagination pagination-sm no-margin pull-right">
+                        {{ knp_pagination_render(clients) }}
+                    </ul>
+                </div><!-- /.box-footer -->
+            </div><!-- /.box -->
+        </div><!-- /.col -->
+    </div><!-- /.row -->
+    {% include "clients/modals/send_email.html.twig" %}
+{% endblock %}
+
+{#Custom js for mailbox#}
+{% block custom_resources %}
+    <script src="{{ settings.static_url }}/dist/js/pages/clients.js"></script>
+{% endblock %}
+

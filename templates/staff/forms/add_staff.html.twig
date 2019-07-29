@@ -1,0 +1,89 @@
+{{ form_start(form) }}
+<div class="box-body">
+    <div class="form-group">
+        <label>Емейл</label>
+        {% if staff is defined %}
+            {{ form_widget(form.email, {value: staff.account.email, 'attr':{'readonly': 'true'}}) }}
+        {% else %}
+            {{ form_widget(form.email) }}
+        {% endif %}
+    </div>
+
+    <div class="form-group">
+        <legend>Управление и достъп до клиенти</legend>
+        <label class="checkbox-inline">
+            <input type="checkbox"  data-toggle="toggle" name="clientAccess" value="1" class="access_switch" data-field="client" {% if staff is defined and staff.clientAccess %}checked{% endif %}> Преглед
+        </label>
+        <label class="checkbox-inline">
+            <input type="checkbox" data-toggle="toggle" {% if staff is not defined or (staff is defined and not staff.clientAccess) %}disabled{% endif %} name="clientManage" value="1" {% if staff is defined and staff.clientManage %}checked{% endif %}> Управление
+        </label>
+    </div>
+
+    <div class="form-group">
+        <legend>Управление и достъп до служители</legend>
+        <label class="checkbox-inline">
+            <input type="checkbox"  data-toggle="toggle" name="staffAccess" value="1" class="access_switch" data-field="staff" {% if staff is defined and staff.staffAccess %}checked{% endif %}> Преглед
+        </label>
+        <label class="checkbox-inline">
+            <input type="checkbox" data-toggle="toggle" {% if staff is not defined or (staff is defined and not staff.staffAccess) %}disabled{% endif %} name="staffManage" value="1" {% if staff is defined and staff.staffManage %}checked{% endif %}> Управление
+        </label>
+    </div>
+
+    <div class="form-group">
+        <legend>Управление и достъп до услуги</legend>
+        <label class="checkbox-inline">
+            <input type="checkbox"  data-toggle="toggle" name="serviceAccess" value="1" class="access_switch" data-field="service" {% if staff is defined and staff.serviceAccess %}checked{% endif %}> Преглед
+        </label>
+        <label class="checkbox-inline">
+            <input type="checkbox" data-toggle="toggle" {% if staff is not defined or (staff is defined and not staff.serviceAccess) %}disabled{% endif %} name="serviceManage" value="1" {% if staff is defined and staff.serviceManage %}checked{% endif %}> Управление
+        </label>
+    </div>
+
+    <div class="form-group">
+        <legend>Управление на събитията в календара</legend>
+        <label class="checkbox-inline">
+            <input type="checkbox"  data-toggle="toggle" name="eventAccess" value="1" class="access_switch" data-field="event" {% if staff is defined and staff.eventAccess %}checked{% endif %}>
+        </label>
+    </div>
+    <legend>Работен график</legend>
+
+    {% for day, trans in days %}
+        <div class="form-group col-xs-12">
+
+            <legend>{{ trans }}</legend> <input type="checkbox"  {% if working_time is defined and working_time and attribute(working_time, day).enable %}checked{% endif %}  data-toggle="toggle" class="manage_day" name="{{ day }}" data-day="{{ day }}">
+            <div class="col-xs-4">
+                <div class="bootstrap-timepicker">
+                    <div class="input-group">
+                        <input type="text" class="form-control timepicker" name="{{ day }}Start" {% if working_time is not defined or not working_time or not attribute(working_time, day).enable%}disabled{% endif %} {% if working_time is defined and working_time and attribute(working_time, day).start is defined %}value="{{ attribute(working_time, day).start }}"{% elseif company_working_time is defined and attribute(company_working_time, day).start is defined %}value="{{ attribute(company_working_time, day).start }}"{% endif %} />
+                        <div class="input-group-addon working_time_clock">
+                            <i class="fa fa-clock-o"></i>
+                        </div>
+                    </div><!-- /.input group -->
+                </div><!-- /.form group -->
+            </div>
+
+            <div class="col-xs-4">
+                <div class="bootstrap-timepicker">
+                    <div class="input-group">
+                        <input type="text" class="form-control timepicker" name="{{ day }}End" {% if working_time is not defined or not working_time or not attribute(working_time, day).enable%}disabled{% endif %} {% if working_time is defined and attribute(working_time, day).end is defined%}value="{{ attribute(working_time, day).end }}"{% elseif company_working_time is defined and attribute(company_working_time, day).end is defined %}value="{{ attribute(company_working_time, day).end }}"{% endif %}/>
+                        <div class="input-group-addon working_time_clock">
+                            <i class="fa fa-clock-o"></i>
+                        </div>
+                    </div><!-- /.input group -->
+                </div><!-- /.form group -->
+            </div>
+        </div>
+    {% endfor %}
+
+
+
+
+    <div class="form-group">
+        На посоченият емейл адрес ще бъде изпратена покана за присъединяване към мрежата. След потвърждение, потребителят ще бъде подканен да въведе своите данни, ако вече няма профил в мрежата.
+    </div>
+</div>
+
+<div class="box-footer">
+    {{ form_widget(form.submit) }}
+</div>
+{{ form_end(form) }}

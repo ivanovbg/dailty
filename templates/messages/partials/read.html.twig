@@ -1,0 +1,42 @@
+<div class="box box-primary">
+    <div class="box-header with-border">
+        <h3 class="box-title">Преглед</h3>
+
+        <div class="box-tools pull-right">
+
+        </div>
+    </div>
+    <!-- /.box-header -->
+    <div class="box-body no-padding">
+        <div class="mailbox-read-info">
+            <h3>{{ message.subject }}</h3>
+            <h5>{% if active == "inbox" %}
+                   От {{ message.sender.name }}
+                {% else %}
+                   За {{ message.receiver.name }}
+                {% endif %}
+                <span class="mailbox-read-time pull-right">{{ message.dateSend|date("H:i d-m-Y") }}</span>
+            </h5>
+        </div>
+
+        <!-- /.mailbox-controls -->
+        <div class="mailbox-read-message">
+            {{ message.message|raw }}
+        </div>
+        <!-- /.mailbox-read-message -->
+    </div>
+    <!-- /.box-body -->
+    <div class="box-footer">
+
+    </div>
+    <!-- /.box-footer -->
+    <div class="box-footer">
+        {% if active =="inbox" %}
+        <div class="pull-right">
+            <a href="{{ path('send_message', {'id': message.id}) }}" class="btn btn-default"><i class="fa fa-reply"></i> Отговори</a>
+        </div>
+        {% endif %}
+        <a href="{{ path('delete_message', {'id': message.id}) }}" class="btn btn-default"><i class="fa fa-trash-o"></i> Изтрий</a>
+    </div>
+    <!-- /.box-footer -->
+</div>

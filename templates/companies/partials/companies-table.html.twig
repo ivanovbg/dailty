@@ -1,0 +1,33 @@
+<div class="box box-primary">
+    <div class="box-header">
+        <h3 class="box-title">Моите компании</h3>
+    </div><!-- /.box-header -->
+    <div class="box-body">
+        {% if companies %}
+        <table class="table no-margin">
+            <tbody class="elements">
+            {% for company in companies %}
+                <tr data-id="{{ company.company.id }}">
+                    <td>{{ company.company.name }}</td>
+                    <td class="text-right">
+                        <a href="{{ path('company_view', {'slug': company.company.slug}) }}" class="btn btn-xs"><i class="fa fa-dashboard"></i></a>
+                        {% if account.isMain %}
+                        <a href="{{ path('edit_company', {'slug': company.company.slug}) }}" class="btn btn-xs"><i class="fa fa-pencil"></i></a>
+                        <button class="btn btn-xs confirm_delete" data-url="{{ path('remove_company', {'slug': company.company.slug}) }}"><i class="fa fa-remove" aria-hidden="true"></i></button>
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        {% else %}
+            <div class="alert alert-info alert-dismissable">
+                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                <h4><i class="icon fa fa-info"></i> Няма компании!</h4>
+                Съжаляваме, но вашият профил не е асоциран с нито една компания! Ако Вие сте с администраторски профил, може да добавите компания от формата в дясно.
+            </div>
+        {% endif %}
+    </div><!-- /.box-body -->
+</div><!-- /.box -->
+
+{% include "partials/modals/confirm_delete.html.twig" %}

@@ -1,0 +1,79 @@
+#index:
+#    path: /
+#    controller: App\Controller\DefaultController::index
+
+login_ajax:
+    path: /ajax/login
+    controller: App\Services\Ajax::login
+
+company_select:
+    path: /ajax/company_select
+    controller: App\Services\Ajax::company_select
+
+delete_ajax:
+    path: /ajax/delete
+    controller: App\Services\Ajax::delete
+
+check_account_data:
+    path: /ajax/check_account_data
+    controller: App\Services\Ajax::check_account_data
+
+delete_messages:
+    path: /ajax/delete_messages
+    controller: App\Services\Ajax::delete_messages
+
+forgot_password:
+    path: /ajax/forgot_password
+    controller: App\Services\Ajax::forgot_password
+
+new_password:
+    path: /ajax/new_password
+    controller: App\Services\Ajax::new_password
+
+add_service_providers:
+    path: /ajax/add_service_providers
+    controller: App\Services\Ajax::add_service_providers
+
+send_email_to_client:
+    path: /ajax/send_email_to_client
+    controller: App\Services\Ajax::send_email_to_client
+
+get_events:
+    path: /ajax/calendar/get_events
+    controller: App\Services\Calendar::get_events
+
+get_providers:
+    path: /ajax/calendar/get_providers
+    controller: App\Services\Calendar::get_providers
+
+get_providers_services:
+    path: /ajax/calendar/get_provider_services
+    controller: App\Services\Calendar::get_provider_services
+
+get_clients:
+    path: /ajax/calendar/get_clients
+    controller: App\Services\Calendar::get_clients
+
+save_event:
+    path: /ajax/calendar/save_event
+    controller: App\Services\Calendar::save_event
+
+delete_event:
+    path: /ajax/calendar/delete_event
+    controller: App\Services\Calendar::delete_event
+
+update_event:
+    path: /ajax/calendar/update_event
+    controller: App\Services\Calendar::update_event
+
+add_note:
+    path: /ajax/add_note
+    controller: App\Services\Ajax::add_note
+
+get_note:
+    path: /ajax/get_note
+    controller: App\Services\Ajax::get_note
+
+delete_note:
+    path: /ajax/delete_note
+    controller: App\Services\Ajax::delete_note

@@ -1,0 +1,26 @@
+{% extends '/layout/layout.html.twig' %}
+
+{% block body %}
+    <div class="row">
+        <!-- flash messages -->
+        <div class="error" style="margin-bottom: 15px;">
+            {% include 'partials/more/flash_messages.html.twig' %}
+        </div>
+        <!-- /end flash messages -->
+
+        <div class="col-md-3">
+            {% include "messages/partials/left_panel.html.twig" %}
+
+        </div>
+        <!-- /.col -->
+        <div class="col-md-9">
+                {% include "messages/partials/messages.html.twig" %}
+        </div>
+        <!-- /.col -->
+    </div>
+{% endblock %}
+
+{#Custom js for mailbox#}
+{% block custom_resources %}
+    <script src="{{ settings.static_url }}/dist/js/messages.js"></script>
+{% endblock %}

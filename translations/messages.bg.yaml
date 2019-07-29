@@ -1,0 +1,14 @@
+last_5_staff: 'Последно добавени служители'
+company: 'Компания'
+edit_company_link: 'Редактирай данните'
+add_edit_company_modal: 'Добавяне/Редактиране на компания'
+header_private_messages: 'Лични съобщения'
+header_notifications: 'Известия'
+header_view_all: "Всички"
+
+
+#profile
+profile_information: 'Профилна информация'
+edit_profile: 'Редактирай своят профил'
+email: 'E-mail'
+name: 'Име'

@@ -1,0 +1,57 @@
+{% extends "/layout/layout.html.twig" %}
+{% block body %}
+    <div class="row">
+        {% include 'partials/more/flash_messages.html.twig' %}
+        <div class="col-md-12">
+            <!-- TABLE: LATEST ORDERS -->
+            <div class="box box-info">
+                <div class="box-header with-border">
+                    {% include "partials/more/table_search_box.html.twig" %}
+                    <div class="box-tools pull-right">
+                        {% if info.staffManage %}
+                            <a href="{{ path('add_staff', {'slug': company.slug}) }}" class="btn btn-block btn-primary btn-sm">
+                                Добави служител
+                            </a>
+                        {% endif %}
+                    </div>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                    <div class="table-responsive">
+                        <table class="table no-margin">
+                            <thead>
+                            <tr>
+                                <th width="80%">Име</th>
+                                <th width="13%">Опции</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                {% for staff in staffs %}
+                                    <tr>
+                                        <td>{{ staff.account.name }}</td>
+                                        <td>
+                                            <a href="{{ path('send_message', {'id': 'false', 'receiver_id': staff.account.id}) }}" class="btn btn-xs {% if account.id == staff.account.id %}disabled{% endif %}" data-toggle="tooltip" data-placement="top" title="Изпрати лично съобщение"><i class="fa fa-comment"></i></a>
+
+                                            {% if info.staffManage == 1 and (not staff.mainAccess or not staff.account.isMain) or (account.isMain and staff.account.id==account.id) %}
+                                                {% if account.isMain and info.MainAccess %}
+                                                 <a class="btn btn-xs" href="{{ path('edit_staff', {'slug': slug, 'id': staff.account.id}) }}"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                                                 {% endif %}
+
+
+                                                <button class="btn btn-xs confirm_delete" data-url="{{ path('remove_staff', {'slug': slug, 'id': staff.account.id}) }}"><i class="fa fa-remove" aria-hidden="true"></i></button>
+                                            {% endif %}
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div><!-- /.table-responsive -->
+                </div><!-- /.box-body -->
+                <div class="box-footer clearfix">
+                    <ul class="pagination pagination-sm no-margin pull-right">
+                        {{ knp_pagination_render(staffs) }}
+                    </ul>
+                </div><!-- /.box-footer -->
+            </div><!-- /.box -->
+        </div><!-- /.col -->
+    </div><!-- /.row -->
+{% endblock %}

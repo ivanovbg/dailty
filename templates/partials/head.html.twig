@@ -1,0 +1,59 @@
+<meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+<!-- Bootstrap 3.3.2 -->
+<link href="{{ settings.static_url }}/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<!-- Font Awesome Icons -->
+<link href="{{ settings.static_url }}/dist/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+<!-- Ionicons -->
+<link href="//code.ionicframework.com/ionicons/2.0.0/css/ionicons.min.css" rel="stylesheet" type="text/css" />
+<!-- Morris chart -->
+<link href="{{ settings.static_url }}/plugins/morris/morris.css" rel="stylesheet" type="text/css" />
+<!-- jvectormap -->
+<link href="{{ settings.static_url }}/plugins/jvectormap/jquery-jvectormap-1.2.2.css" rel="stylesheet" type="text/css" />
+<!-- Theme style -->
+<link href="{{ settings.static_url }}/dist/css/AdminLTE.min.css" rel="stylesheet" type="text/css" />
+<link href="{{ settings.static_url }}/dist/css/custom.css" rel="stylesheet" type="text/css" />
+<!-- AdminLTE Skins. Choose a skin from the css/skins
+     folder instead of downloading all of them to reduce the load. -->
+<link href="{{ settings.static_url }}/dist/css/skins/_all-skins.min.css" rel="stylesheet" type="text/css" />
+
+<link rel="stylesheet" href="{{ settings.static_url }}/plugins/iCheck/all.css">
+
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+<script src="{{ settings.static_url }}/dist/js/html5shiv.js"></script>
+<script src="{{ settings.static_url }}/dist/js/respond.min.js"></script>
+<![endif]-->
+
+<link rel="stylesheet" href="{{ settings.static_url }}/plugins/bootstrap-select/bootstrap-select.min.css" />
+<link rel="stylesheet" href="{{ settings.static_url }}/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
+<link rel="stylesheet" href="{{ settings.static_url }}/plugins/bootstrap-multiselect/bootstrap-multiselect.css">
+
+
+<link rel="apple-touch-icon" sizes="57x57" href="{{ settings.static_url }}/images/favicons/apple-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="{{ settings.static_url }}/images/favicons/apple-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="{{ settings.static_url }}/images/favicons/apple-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="{{ settings.static_url }}/images/favicons/apple-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="{{ settings.static_url }}/images/favicons/apple-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="{{ settings.static_url }}/images/favicons/apple-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="{{ settings.static_url }}/images/favicons/apple-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="{{ settings.static_url }}/images/favicons/apple-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="{{ settings.static_url }}/images/favicons/apple-icon-180x180.png">
+<link rel="icon" type="image/png" sizes="192x192"  href="{{ settings.static_url }}/images/favicons/android-icon-192x192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="{{ settings.static_url }}/images/favicons/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="{{ settings.static_url }}/images/favicons/favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="16x16" href="{{ settings.static_url }}/images/favicons/favicon-16x16.png">
+<link rel="manifest" href="{{ settings.static_url }}/images/favicons/manifest.json">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="{{ settings.static_url }}/images/favicons/ms-icon-144x144.png">
+<meta name="theme-color" content="#ffffff">
+
+
+{#Global JS variables#}
+<script type="text/javascript">
+    /* <![CDATA[ */
+    var account = {% if account %}{{ account.id }}{% else %}0{% endif %};
+    var company = {% if company is defined and company %}{{ company.id }}{% else %}0{% endif %};
+    var url = '{{ settings.url }}';
+    /* ]]> */
+</script>

@@ -1,0 +1,62 @@
+{% include "mails/partials/header.html.twig" %}
+
+<table style="margin: 0 auto;" cellpadding="0" cellspacing="0" width="100%" bgcolor="#4dbfbf">
+    <tr>
+        <td>
+            <br>
+            <img src="https://www.filepicker.io/api/file/Pv8CShvQHeBXdhYu9aQE" width="216" height="189" alt="robot picture">
+        </td>
+    </tr>
+    <tr>
+        <td class="headline">
+            {{ subject }}
+        </td>
+    </tr>
+    <tr>
+        <td>
+
+            <center>
+                <table style="margin: 0 auto;" cellpadding="0" cellspacing="0" width="60%">
+                    <tr>
+                        <td style="color:#187272;">
+                            <br>
+                            Здравейте!<br />
+                            {% if exists_account %}
+                                {{ from.name }} Ви покани да се присъедините към екипа на управляваната от него компания {{ company.name }}. Вие вече разполагате с профил в системата и може да се логнете със своето потребителско име и парола като цъкнете на бутона по-долу.
+                            {% else %}
+                                {{ from.name }} Ви покани да се присъедините към екипа на управляваната от него компания {{ company.name }}. Вие не разполагате с профил в системата и за получите достъп до системата е необходимо да последвате линка по-долу, за да завършите регистрацията.
+                            {% endif %}
+                            <br>
+                            <br>
+                        </td>
+                    </tr>
+                </table>
+            </center>
+
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div><!--[if mso]>
+                <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="http://" style="height:50px;v-text-anchor:middle;width:200px;" arcsize="8%" stroke="f" fillcolor="#178f8f">
+                    <w:anchorlock/>
+                    <center>
+                <![endif]-->
+                <a href="{{ url }}" style="background-color:#178f8f;border-radius:4px;color:#ffffff;display:inline-block;font-family:Helvetica, Arial, sans-serif;font-size:16px;font-weight:bold;line-height:50px;text-align:center;text-decoration:none;width:200px;-webkit-text-size-adjust:none;">{% if exists_account %}Вход{% else%}Напред{% endif %}</a>
+                <!--[if mso]>
+                </center>
+                </v:roundrect>
+                <![endif]--></div>
+            <br>
+            <br>
+        </td>
+    </tr>
+    <tr style="color: white;">
+        Важно:
+        Ако Вие не очаквате подобна покана, моля цъкнете на този линк!
+        <br />
+    </tr>
+</table>
+
+
+{% include "mails/partials/footer.html.twig" %}

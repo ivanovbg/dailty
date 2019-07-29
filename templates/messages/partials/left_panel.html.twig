@@ -1,0 +1,26 @@
+
+<a href="{{ path('send_message') }}" class="btn btn-primary btn-block margin-bottom">Ново съобщение</a>
+
+<div class="box box-solid">
+    <div class="box-header with-border">
+        <h3 class="box-title">Папки</h3>
+
+        <div class="box-tools">
+            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+            </button>
+        </div>
+    </div>
+    <div class="box-body no-padding">
+        <ul class="nav nav-pills nav-stacked">
+            <li {% if active is defined and active == "inbox" %}class="active"{% endif %}>
+                <a href="{{ path('mail_box') }}"><i class="fa fa-inbox"></i> Получени
+                    <span class="label label-primary pull-right">{{ unread_messages }}</span></a>
+            </li>
+            <li {% if active is defined and active == "outbox" %}class="active"{% endif %}>
+                <a href="{{ path('mail_box_outbox') }}"><i class="fa fa-envelope-o"></i> Изпратени</a>
+            </li>
+        </ul>
+    </div>
+    <!-- /.box-body -->
+</div>
+

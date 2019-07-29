@@ -1,0 +1,8 @@
+{% for label, messages in app.flashes %}
+    {% for message in messages %}
+        <div class="alert alert-{{ label }} alert-dismissable" style="width: 90%; margin: auto; margin-bottom: 15px;">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endfor %}

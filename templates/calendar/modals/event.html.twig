@@ -1,0 +1,82 @@
+<div class="modal fade eventView" id="eventView">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title"></h4>
+            </div>
+            <div class="modal-body">
+                {% if not providers or not clients %}
+                    <div class="alert alert-danger alert-dismissible">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                        <h4><i class="icon fa fa-ban"></i> Грешка!</h4>
+                        Не може да добавите събитие в календара, защото няма служители асоциирани с нито една услуга или няма добавени клиенти към компанията!
+                    </div>
+                {% else %}
+                <form method="post" class="event_form">
+                    <div class="form-group providers_div">
+                        <label>Служител</label>
+                        <select name="providers" class="form-control providers">
+                            <option value="0">Избери</option>
+                            {% for provider in providers %}
+                                <option value="{{ provider.id }}">{{ provider.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+
+                    <div class="form-group services_div" style="display: none">
+                        <label>Услуга</label>
+                        <select name="services" class="form-control services">
+
+                        </select>
+                        <div class="info">
+
+                        </div>
+
+                    </div>
+
+                    <div class="form-group clients_div">
+                        <label>Клиент</label>
+                        <select name="clients" class="form-control clients">
+                            <option value="0">Избери</option>
+                            {% for client in clients %}
+                            <option value="{{ client.id }}">{{ client.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+
+                    <div class="form-group providers_div">
+                        <label>Статус</label>
+                        <select name="status" class="form-control status">
+                            <option value="0">Назначена</option>
+                            <option value="1">Работи се</option>
+                            <option value="2">Завършена</option>
+                            <option value="3">Отказана от клиент</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group description_div" style="display: none">
+                        <label>Допълнителна информация</label>
+
+                    </div>
+                </form>
+                {% endif %}
+
+                <div class="alert alert-danger alert-dismissable alerts" style="display: none">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                    <p class="message"></p>
+                </div>
+            </div>
+            <div class="modal-footer">
+{#                {% if providers and info.eventAccess %}#}
+                <button type="button" class="btn btn-default pull-left deleteEvent" data-dismiss="modal" style="display: none;">Изтрий</button>
+                <button type="button" class="btn btn-primary save_event">Изпрати <i class="fa fa-spinner fa-spin send_loader" style="display: none;"></i></button>
+{#                {% endif %}#}
+            </div>
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->

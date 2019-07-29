@@ -1,0 +1,22 @@
+{% extends "/layout/smart_layout.html.twig" %}
+{% block body %}
+<div class="login-box">
+    <div class="login-logo">
+        <a href="{{ path('account_login') }}"><b>{{ settings.siteName }}</b></a>
+    </div>
+    <div class="login-box-body">
+        <p class="login-box-msg">Вход в системата</p>
+
+
+        <div class="alert alert-danger alert-dismissable" style="display: none;">
+            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+            <h4><i class="icon fa fa-ban"></i> Грешка</h4>
+            <p class="error_message"></p>
+        </div>
+
+        <!-- login form -->
+        {% include 'account/forms/login.html.twig' %}
+
+    </div>
+</div>
+{% endblock %}

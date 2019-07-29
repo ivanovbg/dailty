@@ -1,0 +1,68 @@
+<!-- Left side column. contains the logo and sidebar -->
+<aside class="main-sidebar">
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+        <!-- Sidebar user panel -->
+        <div class="user-panel">
+            <select class="form-control company_select" name="company">
+                <option value="">Избери компания</option>
+                {% for company in companies %}
+                    <option value="{{ company.company.id }}" {% if selected_company and (company.company.id == selected_company.company.id) %}selected{% endif %}>{{ company.company.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <!-- sidebar menu: : style can be found in sidebar.less -->
+        <ul class="sidebar-menu">
+            <li class="header">Навигация</li>
+            <li {% if menu is defined and menu.view == 'dashboard' and menu.active == 'dashboard' %}class="active"{% endif %}>
+                <a href="{{ path('index') }}">
+                    <i class="fa fa-dashboard"></i> <span>Начало</span>
+                </a>
+            </li>
+
+            <li {% if menu is defined and menu.view == 'account' and menu.active == 'my_profile' %}class="active"{% endif %}>
+                <a href="{{ path('account') }}">
+                    <i class="fa fa-user"></i> <span>Моят профил</span>
+                </a>
+            </li>
+
+
+            <li class="treeview {% if menu is defined and menu.view == 'companies' %}active{% endif %}">
+                <a href="#">
+                    <i class="fa fa-building"></i>
+                    <span>Моите компании</span>
+                </a>
+
+
+
+                <ul class="treeview-menu">
+                    {% for company in companies %}
+                        <li {% if slug is defined and slug == company.company.slug %}class="active"{% endif %}>
+                            <a href="{{ path('company_view', {'slug': company.company.slug}) }}">
+                                <i class="fa fa-circle-o"></i> {{ company.company.name }}
+                            </a>
+                        </li>
+                    {% endfor %}
+
+                    {% if account.isMain %}
+                    <li {% if menu is defined and menu.view == 'companies' and menu.active == "index" %}class="active"{% endif %}>
+                        <a href="{{ path('index_companies') }}"><i class="fa fa-circle-o"></i>Управление</a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </li>
+            <li {% if menu is defined and menu.view == 'calendar' and menu.active == "index" %}class="active"{% endif %}>
+                <a href="{{ path('calendar_index') }}"><i class="fa fa-calendar-o"></i>Календар</a>
+            </li>
+
+            <li {% if menu is defined and menu.view == 'stats' and menu.active == 'stats' %}class="active"{% endif %}>
+                <a href="{{ path('stats_index') }}">
+                    <i class="fa fa-bar-chart"></i> <span>Статистика</span>
+                </a>
+            </li>
+
+
+        </ul>
+    </section>
+    <!-- /.sidebar -->
+</aside>

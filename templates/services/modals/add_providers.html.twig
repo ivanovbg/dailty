@@ -1,0 +1,33 @@
+<div class="modal fade addProviders" id="addProviders">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Добавяне на служители</h4>
+            </div>
+            <div class="modal-body">
+                <p>
+                    Изберете служители от падащато меню по-долу и натиснете на бутона "Запиши", за да добавите служители, които могат да извършват тази услуга.
+                </p>
+
+
+                <select name="accounts" id="addproviders" multiple="multiple" class="form-control">
+                {% for add_provider in add_providers %}
+                    <option value="{{ add_provider.id }}">{{ add_provider.name }}</option>
+                {% endfor %}
+                </select>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Затвори</button>
+                <button type="button" class="btn btn-primary js-add-service-providers" data-service="{{ service.id }}">Запази</button>
+            </div>
+
+
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->

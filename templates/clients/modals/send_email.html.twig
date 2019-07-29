@@ -1,0 +1,42 @@
+<div class="modal fade sendClientEmail" id="sendClientEmail">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title"></h4>
+            </div>
+            <div class="modal-body">
+                <div class="alert alert-danger alert-dismissible send_mail_error" style="display: none;">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                    <h4><i class="icon fa fa-ban"></i> Грешка!</h4>
+                    <p class="send_mail_error_message"></p>
+                </div>
+
+                <div class="alert alert-info alert-dismissible send_mail_success" style="display: none;">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                    <p>Съобщението е изпратено успешно!</p>
+                </div>
+
+                <div class="send_mail_form">
+
+                    <input type="text" class="form-control" name="subject" placeholder="Тема"/><br />
+                    <textarea name="message" class="form-control message" id="compose-textarea" rows="20"></textarea>
+
+                </div>
+
+                <p>*всички полета са задължителни</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Затвори</button>
+                <button type="button" class="btn btn-primary send_message">Изпрати <i class="fa fa-spinner fa-spin send_loader" style="display: none;"></i></button>
+            </div>
+
+
+
+        </div>
+        <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->

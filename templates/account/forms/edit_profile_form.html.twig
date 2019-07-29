@@ -1,0 +1,27 @@
+{{ form_start(form) }}
+    <div class="box-body">
+        <div class="form-group">
+            <label>Емейл адрес</label>
+            {{ form_widget(form.email, {attr : {value : account.email}}) }}
+        </div>
+        <div class="form-group">
+            <label>Име</label>
+            {{ form_widget(form.name, {attr : {value : account.name}}) }}
+        </div>
+
+        <div class="form-group">
+            <label>Нова парола</label>
+            {{ form_widget(form.new_password) }}
+            <p class="help-block">Ако не искате да променяте паролата си, оставете това поле празно.</p>
+        </div>
+
+        <div class="form-group">
+            <label>Текуща парола</label>
+            {{ form_widget(form.password) }}
+        </div>
+    </div>
+
+    <div class="box-footer">
+        {{ form_widget(form.submit) }}
+    </div>
+{{ form_end(form) }}

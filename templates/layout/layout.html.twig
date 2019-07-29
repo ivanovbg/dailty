@@ -1,0 +1,47 @@
+{% set pageTitle = paths|last %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{{ pageTitle.title }} - {{ settings.siteName }}</title>
+    {% include '/partials/head.html.twig' %}
+    {% block custom_css_resource %}
+
+    {% endblock %}
+</head>
+<body class="skin-blue layout-boxed">
+    <div class="wrapper">
+        {% include 'partials/header.html.twig' %}
+        {% include 'partials/left_column.html.twig' %}
+
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <h1>{{ pageTitle.title }}</h1>
+                <ol class="breadcrumb">
+                    {% for path in paths %}
+                        <li {% if loop.last %} class="active"{% endif %}>{{ path.title }}</li>
+                    {% endfor %}
+                </ol>
+            </section>
+            <section class="content">
+        {% block body %}
+
+
+
+        {% endblock %}
+
+                {% include "partials/modals/delete_confirm.html.twig" %}
+
+            </section><!-- /.content -->
+        </div><!-- /.content-wrapper -->
+        {% include 'partials/footer.html.twig' %}
+    </div>
+    {% include 'partials/resources.html.twig' %}
+
+    {% block custom_resources %}
+
+    {% endblock %}
+
+</body>
+</html>

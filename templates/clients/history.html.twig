@@ -1,0 +1,61 @@
+{% extends '/layout/layout.html.twig' %}
+
+{% block body %}
+<div class="row">
+    <!-- flash messages -->
+    {% include 'partials/more/flash_messages.html.twig' %}
+    <!-- /end flash messages -->
+    <div class="col-md-12">
+        <!-- TABLE: LATEST ORDERS -->
+        <div class="box box-info">
+            <div class="box-header with-border">
+                {% include "partials/more/table_search_box.html.twig" %}
+
+
+
+            </div><!-- /.box-header -->
+            <div class="box-body">
+                <div class="table-responsive">
+                    {% if events is empty %}
+                        <div class="callout callout-danger">
+                            <h4>Упссс, липсва история!</h4>
+
+                            <p>Съжаляваме, но за този клиент липсва история за посещения в тази компания.</p>
+                        </div>
+                    {% else %}
+                        <table class="table no-margin">
+                            <thead>
+                            <tr>
+                                <th>Услуга</th>
+                                <th>Служител</th>
+                                <th>Дата</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            {% for event in events %}
+                                <tr>
+                                    <td>{{ event.service.name}}</td>
+                                    <td>{{ event.provider.name }}</td>
+                                    <td>{{ event.start|date("d-m-Y") }}</td>
+                                </tr>
+                            {% endfor %}
+
+                            </tbody>
+                        </table>
+                    {% endif %}
+                </div><!-- /.table-responsive -->
+            </div><!-- /.box-body -->
+            <div class="box-footer clearfix">
+                <ul class="pagination pagination-sm no-margin pull-right">
+                    {{ knp_pagination_render(events) }}
+                </ul>
+            </div><!-- /.box-footer -->
+        </div><!-- /.box -->
+    </div><!-- /.col -->
+</div><!-- /.row -->
+{% endblock %}
+
+{% block custom_resources %}
+
+{% endblock %}
+

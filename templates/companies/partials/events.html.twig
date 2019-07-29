@@ -1,0 +1,32 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="box box-primary">
+            <div class="box-header" style="cursor: move;">
+                <i class="ion ion-clipboard"></i>
+                <h3 class="box-title">Вашите задачи за днес</h3>
+            </div><!-- /.box-header -->
+            <div class="box-body">
+                <ul class="todo-list">
+                    {% if not my_events %}
+                        <div class="callout callout-warning">
+                            <h4>Нямате задачи за днес!</h4>
+                        </div>
+                    {% endif %}
+
+                    {% for event in my_events %}
+                        <li class="item" data-id="{{ event.id }}">
+                            <span class="text">{{ event.service.name }}<small>(клиент: {{ event.client.name }})</small></span>
+                            <small class="label label-default"><i class="fa fa-clock-o"></i> {{ event.start|date("H:i") }} - {{ event.end|date("H:i") }}</small>
+                            {% if info.eventAccess %}
+                                <div class="tools">
+                                    <i class="fa fa-trash-o js-delete" data-url="/ajax/calendar/delete_event" data-type="ajax"></i>
+                                </div>
+                            {% endif %}
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div><!-- /.box-body -->
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,39 @@
+[28-Sep-2018 10:53:55 UTC] PHP Fatal error:  Uncaught Twig_Error_Loader: The "/home/devsbgco/subdomains/worker\vendor\symfony\framework-bundle/Resources/views" directory does not exist ("/home/devsbgco/subdomains/worker\vendor\symfony\framework-bundle/Resources/views"). in /home/devsbgco/subdomains/worker/vendor/twig/twig/lib/Twig/Loader/Filesystem.php:101
+Stack trace:
+#0 /home/devsbgco/subdomains/worker/var/cache/prod/ContainerXyqMMxi/srcProdProjectContainer.php(531): Twig_Loader_Filesystem->addPath('/home/devsbgco/...', 'Framework')
+#1 /home/devsbgco/subdomains/worker/var/cache/prod/ContainerXyqMMxi/srcProdProjectContainer.php(846): ContainerXyqMMxi\srcProdProjectContainer->getTwigService()
+#2 /home/devsbgco/subdomains/worker/var/cache/prod/ContainerXyqMMxi/srcProdProjectContainer.php(363): ContainerXyqMMxi\srcProdProjectContainer->getSensioFrameworkExtra_View_ListenerService()
+#3 /home/devsbgco/subdomains/worker/vendor/symfony/event-dispatcher/EventDispatcher.php(229): ContainerXyqMMxi\srcProdProjectContainer->ContainerXyqMMxi\{closure}()
+#4 /home/de in /home/devsbgco/subdomains/worker/vendor/twig/twig/lib/Twig/Loader/Filesystem.php on line 101
+[28-Sep-2018 10:53:58 UTC] PHP Fatal error:  Uncaught Twig_Error_Loader: The "/home/devsbgco/subdomains/worker\vendor\symfony\framework-bundle/Resources/views" directory does not exist ("/home/devsbgco/subdomains/worker\vendor\symfony\framework-bundle/Resources/views"). in /home/devsbgco/subdomains/worker/vendor/twig/twig/lib/Twig/Loader/Filesystem.php:101
+Stack trace:
+#0 /home/devsbgco/subdomains/worker/var/cache/prod/ContainerXyqMMxi/srcProdProjectContainer.php(531): Twig_Loader_Filesystem->addPath('/home/devsbgco/...', 'Framework')
+#1 /home/devsbgco/subdomains/worker/var/cache/prod/ContainerXyqMMxi/srcProdProjectContainer.php(846): ContainerXyqMMxi\srcProdProjectContainer->getTwigService()
+#2 /home/devsbgco/subdomains/worker/var/cache/prod/ContainerXyqMMxi/srcProdProjectContainer.php(363): ContainerXyqMMxi\srcProdProjectContainer->getSensioFrameworkExtra_View_ListenerService()
+#3 /home/devsbgco/subdomains/worker/vendor/symfony/event-dispatcher/EventDispatcher.php(229): ContainerXyqMMxi\srcProdProjectContainer->ContainerXyqMMxi\{closure}()
+#4 /home/de in /home/devsbgco/subdomains/worker/vendor/twig/twig/lib/Twig/Loader/Filesystem.php on line 101
+[28-Sep-2018 18:18:20 UTC] PHP Fatal error:  Class 'App\Controller\Controllerd' not found in /home/devsbgco/subdomains/worker/src/Controller/IndexController.php on line 8
+[28-Sep-2018 18:18:23 UTC] PHP Fatal error:  Class 'App\Controller\Controllerd' not found in /home/devsbgco/subdomains/worker/src/Controller/IndexController.php on line 8
+[08-Oct-2018 16:22:36 UTC] PHP Fatal error:  Allowed memory size of 536870912 bytes exhausted (tried to allocate 400560128 bytes) in /home/devsbgco/subdomains/worker/src/Services/Accounts.php on line 20
+[09-Oct-2018 18:39:14 UTC] PHP Warning:  Uncaught ErrorException: Warning: require_once(settings.inc.php): failed to open stream: No such file or directory in /home/devsbgco/subdomains/worker/src/Services/Service.php:47
+Stack trace:
+#0 /home/devsbgco/subdomains/worker/src/Services/Service.php(47): require_once()
+#1 /home/devsbgco/subdomains/worker/src/Services/Service.php(15): App\Services\Service->settings()
+#2 /home/devsbgco/subdomains/worker/src/Services/Accounts.php(10): App\Services\Service->__construct(Object(ContainerOTtuFy3\srcDevDebugProjectContainer))
+#3 /home/devsbgco/subdomains/worker/var/cache/dev/ContainerOTtuFy3/getAccountsService.php(12): App\Services\Accounts->__construct(Object(ContainerOTtuFy3\srcDevDebugProjectContainer), Object(Twig_Environment))
+#4 /home/devsbgco/subdomains/worker/var/cache/dev/ContainerOTtuFy3/srcDevDebugProjectContainer.php(376): require('/home/devsbgco/...')
+#5 /home/devsbgco/subdomains/worker/vendor/symfony/dependency-injection/Container.php(240): ContainerOTtuFy3\srcDevDebugProjectContainer->load('getAccou in /home/devsbgco/subdomains/worker/src/Services/Service.php on line 47
+[09-Oct-2018 18:39:14 UTC] PHP Fatal error:  App\Services\Service::settings(): Failed opening required 'settings.inc.php' (include_path='.:/opt/cpanel/ea-php72/root/usr/share/pear') in /home/devsbgco/subdomains/worker/src/Services/Service.php on line 47
+[09-Oct-2018 18:39:28 UTC] PHP Warning:  Uncaught ErrorException: Warning: require_once(/settings.inc.php): failed to open stream: No such file or directory in /home/devsbgco/subdomains/worker/src/Services/Service.php:47
+Stack trace:
+#0 /home/devsbgco/subdomains/worker/src/Services/Service.php(47): require_once()
+#1 /home/devsbgco/subdomains/worker/src/Services/Service.php(15): App\Services\Service->settings()
+#2 /home/devsbgco/subdomains/worker/src/Services/Accounts.php(10): App\Services\Service->__construct(Object(ContainerOTtuFy3\srcDevDebugProjectContainer))
+#3 /home/devsbgco/subdomains/worker/var/cache/dev/ContainerOTtuFy3/getAccountsService.php(12): App\Services\Accounts->__construct(Object(ContainerOTtuFy3\srcDevDebugProjectContainer), Object(Twig_Environment))
+#4 /home/devsbgco/subdomains/worker/var/cache/dev/ContainerOTtuFy3/srcDevDebugProjectContainer.php(376): require('/home/devsbgco/...')
+#5 /home/devsbgco/subdomains/worker/vendor/symfony/dependency-injection/Container.php(240): ContainerOTtuFy3\srcDevDebugProjectContainer->load('getAcco in /home/devsbgco/subdomains/worker/src/Services/Service.php on line 47
+[09-Oct-2018 18:39:28 UTC] PHP Fatal error:  App\Services\Service::settings(): Failed opening required '/settings.inc.php' (include_path='.:/opt/cpanel/ea-php72/root/usr/share/pear') in /home/devsbgco/subdomains/worker/src/Services/Service.php on line 47
+[14-Oct-2018 17:17:56 UTC] PHP Fatal error:  Can't use method return value in write context in /home/devsbgco/subdomains/worker/src/Controller/CompaniesController.php on line 74
+[14-Oct-2018 17:17:57 UTC] PHP Fatal error:  Can't use method return value in write context in /home/devsbgco/subdomains/worker/src/Controller/CompaniesController.php on line 74
+[29-Oct-2018 18:39:55 UTC] PHP Fatal error:  Class 'App\Repository\EntityRepository' not found in /home/devsbgco/subdomains/worker/src/Repository/AccountsRequestRepository.php on line 12
+[29-Oct-2018 18:39:56 UTC] PHP Fatal error:  Class 'App\Repository\EntityRepository' not found in /home/devsbgco/subdomains/worker/src/Repository/AccountsRequestRepository.php on line 12

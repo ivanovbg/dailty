@@ -1,0 +1,26 @@
+<div class="col-md-{% if edit is defined and edit %}12{% else %}6{% endif %}">
+    <!-- PRODUCT LIST -->
+    <div class="box box-primary">
+        <div class="box-header with-border">
+            <h3 class="box-title">{% if edit is defined and edit %}Редактиране на компания{% else %}Добави компания{% endif %}</h3>
+            <div class="box-tools pull-right">
+                <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
+            </div>
+        </div><!-- /.box-header -->
+        <div class="box-body">
+            {% if not account.isMain or (account.plan.companiesLimit < companies|length or account.plan.companiesLimit == companies|length) and (edit is not defined) %}
+                <div class="alert alert-danger alert-dismissable">
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                    <h4><i class="icon fa fa-ban"></i> Грешка</h4>
+                    Максималният брой компании е достигнат и не може да добавяте нови!
+                </div>
+            {% else %}
+                {% include "companies/forms/create_company_form.html.twig" %}
+            {% endif %}
+        </div>
+        <div class="box-footer text-center">
+
+        </div>
+    </div>
+</div>

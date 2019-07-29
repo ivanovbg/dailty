@@ -1,0 +1,82 @@
+<div class="box box-primary">
+    <div class="box-header with-border">
+        <h3 class="box-title folder_title">{{ box_name }}</h3>
+
+        <div class="box-tools pull-right">
+            <div class="has-feedback">
+                <form method="get">
+                    <input type="text" name="search" class="form-control input-sm" placeholder="Търси">
+                    <span class="glyphicon glyphicon-search form-control-feedback"></span>
+                </form>
+            </div>
+        </div>
+        <!-- /.box-tools -->
+    </div>
+    <!-- /.box-header -->
+    <div class="box-body no-padding">
+        <div class="mailbox-controls">
+            <!-- Check all button -->
+            <button type="button" class="btn btn-default btn-sm checkbox-toggle js-mark-all-messages"><i class="fa fa-square-o"></i>
+            </button>
+            <div class="btn-group">
+                <button type="button" class="btn btn-default btn-sm"><i class="fa fa-trash-o"></i></button>
+            </div>
+            <!-- /.btn-group -->
+           <a href="{{ app.request.uri }}" class="btn btn-default btn-sm"><i class="fa fa-refresh"></i></a>
+            <div class="pull-right">
+            </div>
+            <!-- /.pull-right -->
+        </div>
+        <div class="table-responsive mailbox-messages">
+            <table class="table table-hover table-striped">
+                <tbody>
+                {% if messages is empty %}
+                    <tr><td>Кутията е празна!</td></tr>
+                {% endif %}
+                {% for message in messages %}
+                    <tr data-id="{{ message.id }}">
+                        <td><input type="checkbox" class="selected_messages" name="messages[]" value="{{ message.id }}"></td>
+                        <td class="mailbox-star"><i class="fa fa-star{% if message.isRead %}-o{% endif %} text-yellow"></i></td>
+                        <td class="mailbox-name">{% if active == "inbox" %}{{ message.sender.name}}{% else %}{{ message.receiver.name }}{% endif %}</td>
+                        <td class="mailbox-subject">
+                            <b>
+                                <a href="{{ path('message_view', {'id': message.id}) }}">
+                                    {{ message.subject|length > 50 ? message.subject|slice(0, 50) ~ '...' : message.subject}}
+                                </a>
+                            </b>
+                        </td>
+                        <td class="mailbox-attachment"></td>
+                        <td class="mailbox-date">{{ message.dateSend|date("H:i d-m-Y") }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            <!-- /.table -->
+        </div>
+        <!-- /.mail-box-messages -->
+    </div>
+    <!-- /.box-body -->
+    <div class="box-footer no-padding">
+        <div class="mailbox-controls">
+            <!-- Check all button -->
+            <button type="button" class="btn btn-default btn-sm checkbox-toggle"><i class="fa fa-square-o"></i>
+            </button>
+            <div class="btn-group">
+                <button type="button" class="btn btn-default btn-sm delete_messages"><i class="fa fa-trash-o"></i></button>
+            </div>
+            <!-- /.btn-group -->
+            <a href="{{ app.request.uri }}" class="btn btn-default btn-sm"><i class="fa fa-refresh"></i></a>
+            <div class="pull-right">
+
+                <div class="btn-group">
+
+                </div>
+                <!-- /.btn-group -->
+            </div>
+            <!-- /.pull-right -->
+        </div>
+    </div>
+</div>
+{{ knp_pagination_render(messages) }}
+<!-- /. box -->
+

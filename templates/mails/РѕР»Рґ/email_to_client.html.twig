@@ -1,0 +1,48 @@
+{% include "mails/partials/header.html.twig" %}
+
+<table style="margin: 0 auto;" cellpadding="0" cellspacing="0" width="100%" bgcolor="#4dbfbf">
+    <tr>
+        <td class="headline">
+            {{ subject }}
+        </td>
+    </tr>
+    <tr>
+        <td>
+
+            <center>
+                <table style="margin: 0 auto;" cellpadding="0" cellspacing="0" width="60%">
+                    <tr>
+                        <td style="color:#187272;">
+                            <br>
+                                {{ message|raw }}
+                            <br>
+                        </td>
+                    </tr>
+                </table>
+            </center>
+
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div><!--[if mso]>
+                <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="http://" style="height:50px;v-text-anchor:middle;width:200px;" arcsize="8%" stroke="f" fillcolor="#178f8f">
+                    <w:anchorlock/>
+                    <center>
+                <![endif]-->
+
+                <!--[if mso]>
+                </center>
+                </v:roundrect>
+                <![endif]--></div>
+            <br>
+            <br>
+        </td>
+    </tr>
+    <tr style="color: white;">
+        {{ client.name }} това съобщение е изпратено до теб от {{ account.name }}, служител в компания {{ company.name }}.<br />
+    </tr>
+</table>
+
+
+{% include "mails/partials/footer.html.twig" %}

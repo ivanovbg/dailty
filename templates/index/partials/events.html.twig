@@ -1,0 +1,32 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="box box-primary">
+            <div class="box-header">
+                <i class="ion ion-clipboard"></i>
+                <h3 class="box-title">Вашите задачи за днес</h3>
+            </div><!-- /.box-header -->
+            <div class="box-body">
+                <ul class="todo-list">
+                    {% if not events.items %}
+                        <div class="callout callout-warning">
+                            <h4>Нямате задачи за днес!</h4>
+                        </div>
+                    {% endif %}
+
+                    {% for event in events %}
+                        <li class="item" data-id="{{ event.id }}">
+                            <span class="text">{{ event.service.name }}<small>(клиент: {{ event.client.name }} , компания: {{ event.company.name }})</small></span>
+                            <small class="label label-default"><i class="fa fa-clock-o"></i> {{ event.start|date("H:i") }} - {{ event.end|date("H:i") }}</small>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div><!-- /.box-body -->
+            <div class="box-footer clearfix no-border">
+                <ul class="pagination pagination-sm no-margin pull-right">
+                    {{ knp_pagination_render(events) }}
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</div>

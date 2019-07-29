@@ -1,0 +1,14 @@
+url : https://worker.dailty.com
+static_url : https://worker.dailty.com/assets
+siteName : Dailty
+account_cookie_hash: savetheuser
+no_reply_mail: noreply@dailty.com
+no_reply_name: Dailty.com"
+days :
+  Monday : Понеделник
+  Tuesday : Вторник
+  Wednesday : Сряда
+  Thursday : Четвъртък
+  Friday : Петък
+  Saturday : Събота
+  Sunday : Неделя

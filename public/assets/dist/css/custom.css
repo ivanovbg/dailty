@@ -1,0 +1,16 @@
+.table_search_box{
+    width: 150px;
+}
+
+@media screen and (max-width: 600px) {
+    .table_search_box{
+        width: 50%;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .working_time_clock{
+        display: none;
+    }
+}
+

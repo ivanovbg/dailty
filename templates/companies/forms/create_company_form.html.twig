@@ -1,0 +1,62 @@
+{{ form_start(form) }}
+<div class="box-body">
+    <div class="form-group">
+        <label>Компания</label>
+        {{ form_widget(form.name) }}
+    </div>
+    <div class="form-group">
+        <label>Повече за компанията</label>
+        {{ form_widget(form.description) }}
+    </div>
+
+    <div class="form-group">
+        <label>Град</label>
+        {{ form_widget(form.city) }}
+    </div>
+
+    <div class="form-group">
+        <label>Адрес</label>
+        {{ form_widget(form.address)}}
+    </div>
+
+    <div class="form-group">
+        <label>Телефон</label>
+        {{ form_widget(form.phone) }}
+    </div>
+
+    {% if edit is defined %}
+    <legend>Работно време</legend>
+    {% for day, trans in days %}
+        <div class="form-group col-xs-12">
+
+            <legend>{{ trans }}</legend> <input type="checkbox"  {% if working_time is defined and working_time and attribute(working_time, day).enable %}checked{% endif %}  data-toggle="toggle" class="manage_day" name="{{ day }}" data-day="{{ day }}">
+            <div class="col-xs-4">
+                <div class="bootstrap-timepicker">
+                    <div class="input-group">
+                        <input type="text" class="form-control timepicker" name="{{ day }}Start" {% if working_time is not defined or not working_time or not attribute(working_time, day).enable%}disabled{% endif %} {% if working_time is defined and working_time and attribute(working_time, day).start is defined %}value="{{ attribute(working_time, day).start }}"{% endif %} />
+                        <div class="input-group-addon working_time_clock">
+                            <i class="fa fa-clock-o"></i>
+                        </div>
+                    </div><!-- /.input group -->
+                </div><!-- /.form group -->
+            </div>
+
+            <div class="col-xs-4">
+                <div class="bootstrap-timepicker">
+                    <div class="input-group">
+                        <input type="text" class="form-control timepicker" name="{{ day }}End" {% if working_time is not defined or not working_time or not attribute(working_time, day).enable%}disabled{% endif %} {% if working_time is defined and attribute(working_time, day).end is defined%}value="{{ attribute(working_time, day).end }}"{% endif %}/>
+                        <div class="input-group-addon working_time_clock">
+                            <i class="fa fa-clock-o"></i>
+                        </div>
+                    </div><!-- /.input group -->
+                </div><!-- /.form group -->
+            </div>
+        </div>
+    {% endfor %}
+    {% endif %}
+
+
+</div><!-- /.box-body -->
+
+{{ form_widget(form.submit) }}
+{{ form_end(form) }}

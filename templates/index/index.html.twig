@@ -1,0 +1,17 @@
+{% extends "/layout/layout.html.twig" %}
+{% block body %}
+    {% include "index/partials/events.html.twig" %}
+
+    {% include "index/partials/notes.html.twig" %}
+
+    {% include "companies/partials/companies-table.html.twig" %}
+
+    {% include "index/modals/add_note.html.twig" %}
+    {% include "index/modals/view_note.html.twig" %}
+{% endblock %}
+
+
+{% block custom_resources %}
+
+
+{% endblock %}

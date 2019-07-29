@@ -1,0 +1,72 @@
+{% extends '/layout/layout.html.twig' %}
+
+{% block body %}
+    <!-- Small boxes (Stat box) -->
+    <div class="row">
+        <div class="col-lg-3 col-xs-6">
+            <!-- small box -->
+            <div class="small-box bg-yellow">
+                <div class="inner">
+                    <h3>{{ staffs}}</h3>
+                    <p>служителя</p>
+
+                </div>
+                <div class="icon">
+                    <i class="ion ion-person-add"></i>
+                </div>
+                <a href="{{ path('company_staff', {'slug': company.slug}) }}" class="small-box-footer">Виж всички <i class="fa fa-arrow-circle-right"></i></a>
+            </div>
+        </div><!-- ./col -->
+        <div class="col-lg-3 col-xs-6">
+            <!-- small box -->
+            <div class="small-box bg-aqua">
+                <div class="inner">
+                    <h3>{{ clients }}</h3>
+                    <p>клиенти</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-bag"></i>
+                </div>
+                <a href="{{ path('company_clients', {'slug': company.slug}) }}" class="small-box-footer">Виж всички <i class="fa fa-arrow-circle-right"></i></a>
+            </div>
+        </div><!-- ./col -->
+
+        <div class="col-lg-3 col-xs-6">
+            <!-- small box -->
+            <div class="small-box bg-green">
+                <div class="inner">
+                    <h3>{{ services }}</h3>
+                    <p>услуги</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-stats-bars"></i>
+                </div>
+                <a href="{{ path("company_services", {'slug':company.slug}) }}" class="small-box-footer">Виж всички<i class="fa fa-arrow-circle-right"></i></a>
+            </div>
+        </div><!-- ./col -->
+
+        <div class="col-lg-3 col-xs-6">
+            <!-- small box -->
+            <div class="small-box bg-red">
+                <div class="inner">
+                    <h3>{{ events }}</h3>
+                    <p>събития в календара</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-pie-graph"></i>
+                </div>
+                <a href="{{ path('calendar_index') }}" class="small-box-footer">Виж календара <i class="fa fa-arrow-circle-right"></i></a>
+            </div>
+        </div><!-- ./col -->
+    </div><!-- /.row -->
+
+    {% include "companies/partials/events.html.twig" %}
+
+
+{% include "partials/modals/delete_confirm.html.twig" %}
+
+{% endblock %}
+
+{% block custom_resources %}
+
+{% endblock %}

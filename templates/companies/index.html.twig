@@ -1,0 +1,16 @@
+{% extends "/layout/layout.html.twig" %}
+
+{% block body %}
+
+    <div class="row">
+        {% include 'partials/more/flash_messages.html.twig' %}
+        <div class="col-md{% if not account.main %}-12{% else %}-6{% endif %}">
+            {% include "companies/partials/companies-table.html.twig" %}
+        </div>
+
+
+        {% if account.main %}
+            {% include "companies/partials/create_company_panel.html.twig" %}
+        {% endif %}
+    </div>
+{% endblock %}

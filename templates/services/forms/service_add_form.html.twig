@@ -1,0 +1,36 @@
+{{ form_start(form) }}
+<div class="box-body">
+    <div class="form-group">
+        <label>Име</label>
+        {{ form_widget(form.name) }}
+    </div>
+
+    <div class="form-group">
+        <label>Описание</label>
+        {{ form_widget(form.description) }}
+    </div>
+
+    <div class="form-group">
+        <label>Цена</label>
+        {{ form_widget(form.cost) }}
+        {{ form_errors(form.cost) }}
+    </div>
+
+    <div class="form-group">
+        <label>Времетраене</label>
+        {{ form_widget(form.time, {'type' : 'number'}) }}
+        <p class="help-block">Времетраена на услугата в минути</p>
+    </div>
+
+    <div class="form-group">
+
+        <label>Скрита услуга</label>
+        {{ form_widget(form.is_private) }}
+        <p class="help-block">Тази услуга ще бъде видима в календара само за човекът на когото е възложена.</p>
+    </div>
+</div>
+
+<div class="box-footer">
+    {{ form_widget(form.submit) }}
+</div>
+{{ form_end(form) }}

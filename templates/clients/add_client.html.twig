@@ -1,0 +1,22 @@
+{% extends '/layout/layout.html.twig' %}
+{% block custom_css_resource %}
+    <link href="{{ settings.static_url }}/bootstrap/css/bootstrap-toggle.min.css" rel="stylesheet">
+{% endblock %}
+{% block body %}
+        <div class="row">
+            <div class="col-md-12">
+                <!-- general form elements -->
+                <div class="box box-primary">
+                    <!---edit profile form -->
+                    {% include 'clients/forms/create_client.html.twig' %}
+                    <!---/end profile form -->
+                </div>
+            </div>
+        </div>
+{% endblock %}
+{% block custom_resources %}
+    <script src="{{ settings.static_url }}/bootstrap/js/bootstrap-toggle.min.js"></script>
+{% endblock %}
+
+
+

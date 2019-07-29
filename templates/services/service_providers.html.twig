@@ -1,0 +1,72 @@
+{% extends '/layout/layout.html.twig' %}
+
+{% block body %}
+    <div class="row">
+        <!-- flash messages -->
+        {% include 'partials/more/flash_messages.html.twig' %}
+        <!-- /end flash messages -->
+        <div class="col-md-12">
+            <!-- TABLE: LATEST ORDERS -->
+            <div class="box box-info">
+                <div class="box-header with-border">
+                    {% include "partials/more/table_search_box.html.twig" %}
+                    <div class="box-tools pull-right">
+                        {% if info.serviceManage  %}
+                            <a href="javascript:;" class="btn btn-block btn-primary btn-sm" data-toggle="modal" data-target="#addProviders" data-placement="top">
+                                Добави
+                            </a>
+                        {% endif %}
+                    </div>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                    <div class="table-responsive">
+                        {% if providers is empty %}
+                            <div class="callout callout-danger">
+                                <h4>Упссс, няма добавени служители, които могат да извършват тази услуга!</h4>
+
+                                <p>Съжаляваме, но изглежда все още няма добавени служители, които могат да извършват тази услуга.
+                                </p>
+                            </div>
+                        {% else %}
+                            <table class="table no-margin">
+                                <thead>
+                                <tr>
+                                    <th width="90%">Име</th>
+                                    {% if info.serviceManage %}
+                                        <th>Изтрий</th>
+                                    {% endif %}
+                                </tr>
+                                </thead>
+                                <tbody class="elements">
+                                {% for provider in providers %}
+                                    <tr data-id="{{ provider.id }}">
+                                        <td>{{ provider.account.name }}</td>
+                                        {% if info.serviceManage %}
+                                            <td>
+                                                <button class="btn btn-xs confirm_delete" data-url="{{ path('remove_provider', {'slug': slug, 'service_id': service.id, 'provider_id': provider.id}) }}"><i class="fa fa-remove" aria-hidden="true"></i></button>
+                                            </td>
+                                        {% endif %}
+                                    </tr>
+                                {% endfor %}
+
+                                </tbody>
+                            </table>
+                        {% endif %}
+                    </div><!-- /.table-responsive -->
+                </div><!-- /.box-body -->
+                <div class="box-footer clearfix">
+                    <ul class="pagination pagination-sm no-margin pull-right">
+                        {{ knp_pagination_render(providers) }}
+                    </ul>
+                </div><!-- /.box-footer -->
+            </div><!-- /.box -->
+        </div><!-- /.col -->
+    </div><!-- /.row -->
+    {% include "/services/modals/add_providers.html.twig" %}
+    {% include "partials/modals/confirm_delete.html.twig" %}
+{% endblock %}
+
+
+
+
+

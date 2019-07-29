@@ -1,0 +1,28 @@
+{% extends '/layout/layout.html.twig' %}
+
+{% block body %}
+    <div class="row">
+
+        <div class="col-md-3">
+            {% include "messages/partials/left_panel.html.twig" %}
+
+        </div>
+        <!-- /.col -->
+        <div class="col-md-9">
+            {% if read_message is defined %}
+                {% include "messages/partials/read.html.twig" %}
+            {% else %}
+                {% include "messages/partials/send.html.twig" %}
+            {% endif %}
+
+        </div>
+        <!-- /.col -->
+    </div>
+{% endblock %}
+
+
+{#Custom js for mailbox#}
+{% block custom_resources %}
+    <script src="{{ settings.static_url }}/dist/js/messages.js"></script>
+{% endblock %}
+

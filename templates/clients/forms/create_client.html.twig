@@ -1,0 +1,47 @@
+{{ form_start(form) }}
+<div class="box-body">
+    <div class="form-group">
+        <label>Име</label>
+        {{ form_widget(form.name) }}
+    </div>
+
+    <div class="form-group">
+        <label>Град</label>
+        {{ form_widget(form.city) }}
+    </div>
+    <div class="form-group">
+        <label>Адрес</label>
+        {{ form_widget(form.address) }}
+    </div>
+
+    <div class="form-group">
+        <label>Емейл</label>
+        {{ form_widget(form.email) }}
+        <small>Може да се използва за комуникация с клиента</small>
+    </div>
+
+    <div class="form-group">
+        <label>Телефон</label>
+        {{ form_widget(form.phone) }}
+        <small>Може да се използва за комуникация с клиента</small>
+    </div>
+
+    <div class="form-group">
+        <label>Бележка</label>
+        {{ form_widget(form.note) }}
+        <small>Полезна информация, която може да бъде в полза на служителите</small>
+    </div>
+
+    <div class="form-group">
+        {{ form_widget(form.sendNotifications) }}
+        <small>Да се изпращат ли емейли до клиента, когато бъде създадено ново събитие с него</small>
+    </div>
+
+
+
+</div>
+
+<div class="box-footer">
+    {{ form_widget(form.submit) }}
+</div>
+{{ form_end(form) }}

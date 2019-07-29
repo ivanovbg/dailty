@@ -1,0 +1,59 @@
+{% extends "/layout/smart_layout.html.twig" %}
+{% block body %}
+    <div class="login-box">
+        <div class="login-logo">
+            <a href="{{ path('account_login') }}"><b>{{ settings.siteName }}</b></a>
+        </div>
+        <div class="login-box-body">
+            <p class="login-box-msg">Покана за присъединяване</p>
+
+            {% if not request %}
+                <div class="alert alert-dismissable messages alert-danger" >
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                    Невалиден или изтекъл ключ! <br />
+                    Ключът, които се опитвате да използвате, е невалиден или вече използван. Моля обърнете се към вашият мениджър.
+                </div>
+            {% else %}
+                <div class="alert alert-dismissable messages alert-info" >
+                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                    Моля, попълнете формата по-долу, за да завършите регистрацията.
+                </div>
+
+                {% include 'partials/more/flash_messages.html.twig' %}
+
+
+                {{ form_start(form) }}
+                <div class="form-group has-feedback">
+                    Email:
+                    {{ form_widget(form.email, {'attr': {'readonly': 'true'}}) }}
+                    <small>Не може да променяте емейл адреса</small>
+                </div>
+
+                <div class="form-group has-feedback">
+                    Име:
+                    {{ form_widget(form.name) }}
+                </div>
+
+                <div class="form-group has-feedback">
+                    Парола:
+                    {{ form_widget(form.password) }}
+                </div>
+
+                <div class="form-group has-feedback">
+                    Повтори паролата:
+                    {{ form_widget(form.new_password, {'attr': {'required': 'true'}}) }}
+                </div>
+
+                <div class="row">
+                    <div class="col-xs-4">
+                        {{ form_widget(form.submit, {'attr': {'label': 'Напред'}}) }}
+                    </div>
+                </div>
+
+                {{ form_end(form) }}
+
+            {% endif %}
+
+        </div>
+    </div>
+{% endblock %}

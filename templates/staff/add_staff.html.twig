@@ -1,0 +1,27 @@
+{% extends '/layout/layout.html.twig' %}
+
+{% block custom_css_resource %}
+    <link href="{{ settings.static_url }}/bootstrap/css/bootstrap-toggle.min.css" rel="stylesheet">
+    <link href="{{ settings.static_url }}/plugins/timepicker/bootstrap-timepicker.min.css" rel="stylesheet"/>
+{% endblock %}
+
+
+{% block body %}
+    <div class="row">
+        {% include 'partials/more/flash_messages.html.twig' %}
+        <div class="col-md-12">
+            <!-- general form elements -->
+            <div class="box box-primary">
+                <!---edit profile form -->
+                {% include 'staff/forms/add_staff.html.twig' %}
+                <!---/end profile form -->
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block custom_resources %}
+    <script src="{{ settings.static_url }}/bootstrap/js/bootstrap-toggle.min.js"></script>
+    <script src="{{ settings.static_url }}/plugins/timepicker/bootstrap-timepicker.min.js" type="text/javascript"></script>
+    <script src="{{ settings.static_url }}/dist/js/pages/add_staff.js"></script>
+{% endblock %}

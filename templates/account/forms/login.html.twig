@@ -1,0 +1,23 @@
+<form  method="post" id="login_form">
+    <div class="form-group has-feedback">
+        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+        <input type="text" class="form-control" placeholder="Email" name="email" data-msg-email="Въведеният емейл адрес не е валиден" data-msg-required="Това поле е задължително"/>
+    </div>
+    <div class="form-group has-feedback">
+        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+        <input type="password" class="form-control" placeholder="Парола" name="password" data-msg-required="Това поле е задължително" data-msg-minlength="Паролата трябва да бъде минимум 8 символа"/>
+    </div>
+    <div class="row">
+        <div class="col-xs-8">
+            <div class="checkbox icheck">
+                <label>
+                    <input type="checkbox" name="remember" value="1"> Запомни ме
+                </label>
+            </div>
+        </div><!-- /.col -->
+        <div class="col-xs-4">
+            <button class="btn btn-primary btn-block btn-flat">Вход</button>
+        </div><!-- /.col -->
+    </div>
+    <a href="{{ path('forgot-password') }}">Забравена парола</a>
+</form>
